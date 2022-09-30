@@ -1,6 +1,7 @@
 # ProjetoElite
 
 Link do Site: http://54.237.202.170:3000/
+APK do aplicativo: https://expo.dev/artifacts/74ae5bf5-4449-4679-bdc9-8ad014a92fcb
 
 ## 1. Explicação 
 Elite é um projeto que visa fazer uma ponte entre prestadores de serviço e seus clientes, através de um catalógo de microprestadores de serviço disponível
