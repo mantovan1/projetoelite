@@ -16,11 +16,19 @@ router.get('/consulta/:microempresaid', async (req, res) => {
 
 router.post('/publicacao', verificarTokenCliente, async (req, res) => {
 	try {
-		await db.sequelize.query("insert into comentarios values ('" + req.body.clienteId + "', '" + req.body.microempresaId + "', '" + req.body.texto + "');");
+		const clienteId = req.userId;
+		const microempresaId = req.body.microempresaId;
+		const texto = req.body.texto;
+		await db.sequelize.query(
+			`insert into comentarios values (?, ?, ?);`,
+			{
+				replacements: [clienteId, microempresaId, texto]
+			}
+		);
 		res.send('Enviado');
 	} catch (e) {
 		res.status(500);
 	}
 });
 
-module.exports = router
+module.exports = router;
