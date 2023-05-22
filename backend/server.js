@@ -9,13 +9,7 @@ const empresa = require('./routes/empresa');
 const empresas = require('./routes/empresas');
 const favoritos = require('./routes/favoritos');
 
-const db = require('./db');
-const verificarTokenCliente = require('./helper/auth.js');
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 const app = express();
-
 app.use(bodyParser.json());
 app.use(
 	cors({
@@ -24,23 +18,15 @@ app.use(
 );
 
 app.use(express.static('uploads'));
-
 app.get('/', function (req, res) {
 	res.send('Elite API');
 });
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 app.use('/cliente', cliente);
-
 app.use('/empresa', empresa);
-
 app.use('/empresas', empresas);
-
 app.use('/avaliacao', avaliacao);
-
 app.use('/comentarios', comentarios);
-
 app.use('/favoritos', favoritos);
 
 app.listen(8080, function () {
