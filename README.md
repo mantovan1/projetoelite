@@ -1,19 +1,20 @@
 # ProjetoElite
 
-Link do Site: http://54.237.202.170:3000/
-APK do aplicativo: https://expo.dev/artifacts/74ae5bf5-4449-4679-bdc9-8ad014a92fcb
-
-## 1. Explicação 
+## 1. Apresentação 
 Elite é um projeto que visa fazer uma ponte entre prestadores de serviço e seus clientes, através de um catalógo de microprestadores de serviço disponível
 no aplicativo, e no qual, é possível cadastrar sua microempresa através do nosso site. 
 
-## 2. Configurações
+## 1.1. Atualização
+Este foi um projeto de conclusão de curso na instituição ETEC, dentro do curso técnico de Desenvolvimento de Sistemas. O trabalho foi um sucesso e conseguiu nota máxima com a banca.
 
-*É necessário ter o Node JS, NPM, Expo (a biblioteca em seu PC e o aplicativo em seu smartphone) e o banco de dados MySQL instalado em sua máquina.
+## 2. Dependências
 
-instalando o nodemon:
+node v16.13.0
+expo v6.0.6
+docker v23.0.6
+docker-compose v1.29.2
 
-npm install nodemon -g
+o resto das dependências você pode baixar usando seu gerenciador de módulos dentro de cada setor desse repositório (backend, web, mobile). Geralmente será o npm ou yarn.
 
 ### 2.1. Rede
 
@@ -30,15 +31,9 @@ ajuste de acordo com o seu IP local
 
 <img src="./docs/configuracoes/mysql-statement.png" width="300">
 
-### 2.3. API
+### 2.3. Variáveis de Ambiente e configuração das models
 
-no diretório ".api/" siga estes passos:
-
-execute "npm install"
-
-.env configuração
-ajuste as variáveis de acordo com o usuário e senha do seu banco de dados MySQL
-<img src="./docs/configuracoes/env-file.png" width="300">
+Para configurar as variáveis de ambiente em ./backend, renomeie o arquivo example.env para .env e preencha as variáveis necessárias como MYSQL_PASSWORD e JWT_KEY.
 
 Em *todos os models presentes na API há alguma destas seguintes linhas comentadas:
 
@@ -51,17 +46,14 @@ Para que tudo ocorra certo no banco de dados é necessário que você apague est
 A ordem pra executar os arquivos é:
 
 node Microempresas
+
 node Avaliacao
+
 node Cliente
+
 node createComentarios (este é o único arquivo que não possue essa linha comentada então apenas execute ele)
 
-Agora basta executar o comando "nodemon api.js" para rodar a api na porta 8080
-
-### 2.4. APP
-
-na pasta ".EliteApp/" execute: "npm install" e depois "npm start" para rodar o app 
-
-### 2.5. SITE
+### 2.4. SITE
 
 na pasta ".EliteSite/" execute: "npm install" e depois "npm start" para rodar o site na porta 3000
 
