@@ -1,18 +1,14 @@
 import { Alert } from 'bootstrap';
 import React, { useEffect , useState } from 'react'
-
 import { Link, useHistory } from 'react-router-dom';
-
-import { network } from '../../config/network';
 
 export default function Success(props) {
 
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
     const history = useHistory();
-
     const [message, setMessage] = useState(null);
-    
     const { values } = props;
-
     const formData = new FormData();
 
     formData.append('nome_dono', values.name);
@@ -34,7 +30,7 @@ export default function Success(props) {
         //console.log(values);
 
         const storeData = async () => {
-            await fetch(network.api + '/empresa/cadastro', {
+            await fetch(backendUrl + '/empresa/cadastro', {
                 method: 'post',
                 body: formData
             })

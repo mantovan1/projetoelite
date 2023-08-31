@@ -1,26 +1,23 @@
 import React, {useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import Menu from '../../components/Menu/index';
-
 import './style.css';
-
 import logoImg from '../../assets/elite_logo.png';
 import loginImg from '../../assets/loginImg.png';
 
-import { network } from '../../config/network';
-
 export default function Logon(){
+
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
     const history = useHistory();
-    
     const [nome_empresa, setNomeEmpresa] = useState('');
     const [senha, setSenha] = useState('');
     const [text, setText] = useState('');
     
     const handleLogin = async (e) => {
         e.preventDefault();
-
         try{
-            await fetch(network.api + '/empresa/login', {
+            await fetch(backendUrl + '/empresa/login', {
                 method: 'post',
                 headers: {
                     'Accept': 'application/json',
@@ -37,20 +34,10 @@ export default function Logon(){
                     await localStorage.setItem('@token', data.token);
                     await localStorage.setItem('@empresa', JSON.stringify(data.result));
                     history.push({ pathname: '/info' });
-                } catch (e) {
-                    // saving error
-                }
-            })
-            
-        }catch(err){
-            //
-        } 
-
+                } catch (e) {}
+            });
+        }catch(err){} 
     }
-
-     /*function handleLogin(e){
-        history.push('/info');
-     }*/
 
     return(
         <div className="containerLogin">
@@ -60,11 +47,9 @@ export default function Logon(){
                 </div>
             <div className="logon-conteiner">
                 <img className="loginImg" src = {loginImg} alt="Login"/>
-
                 <section className="form">
                     <form onSubmit={(e) => handleLogin(e)}>
                         <h1>Login</h1>
-
                         <p className="labelInfo">Nome da empresa</p>
                         <input 
                             className="input"
@@ -72,7 +57,6 @@ export default function Logon(){
                             //value = {id}
                             onChange = {(e) => setNomeEmpresa(e.target.value)} //pega o valor do campo
                         />
-
                         <p style={{marginTop: 20, marginBottom: 2}} className="labelInfo">Senha</p>
                         <input className="input link" type = "text" placeholder="Digite sua senha"
                         onChange = {(e) => setSenha(e.target.value)} />
@@ -84,8 +68,6 @@ export default function Logon(){
                     </form>
                     <a>{text}</a>
                 </section>
-
-                
             </div>
         </div>
     );

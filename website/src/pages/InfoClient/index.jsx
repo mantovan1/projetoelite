@@ -4,45 +4,32 @@ import { useLocation } from "react-router-dom";
 import { Accordion } from 'react-bootstrap';
 import { IoMdLogOut } from 'react-icons/io';
 import 'react-dom'
-
 import './style.css';
-
 import logoImg from '../../assets/elite_logo.png';
 import photoCompany from '../../assets/company_photo.png';
 import iconEdit from '../../assets/edit.png';
-
 import InfoGroup1 from '../../components/InfoClient/group1';
 import InfoGroup2 from '../../components/InfoClient/group2';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
-
 import HomePage from '../HomePage/index';
-
-import { network } from '../../config/network';
 
 export default function Info(){
 
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
     const history = useHistory();
-
     const [empresa, setEmpresa] = useState(null);
-
-    //const location = useLocation();
-     useEffect(() => {
+    
+    useEffect(() => {
         var empresaJSON = localStorage.getItem('@empresa');
-
         setEmpresa(JSON.parse(empresaJSON));
-
-
-     }, []);
+    }, []);
 
 
     async function handleLogOut(){
         await localStorage.removeItem('@token');
         await localStorage.removeItem('@empresa');
         history.push('/');
-    }
-
-    function handleEdit(){
-        
     }
 
     if(empresa) {
@@ -58,7 +45,7 @@ export default function Info(){
                     <div className="owner-info">
                         <img 
                             className="company-photo" 
-                            src={network.api + '/' + empresa.foto_perfil} 
+                            src={backendUrl + '/' + empresa.foto_perfil} 
                             alt="empresa" 
                             
                         />
