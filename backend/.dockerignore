@@ -1,0 +1,5 @@
+.data
+migrations
+node_modules
+seeders
+uploads
