@@ -1,36 +1,36 @@
 const db = require('../db');
 
-const Microempresa = db.sequelize.define('microempresas', {
+const Company = db.sequelize.define('companies', {
 	id: {
 		type: db.Sequelize.INTEGER,
 		allowNull: false,
 		autoIncrement: true,
 		primaryKey: true
 	},
-	nome_dono: {
+	owner: {
 		type: db.Sequelize.STRING,
 		allowNull: false
 	},
-	nome_empresa: {
-                type: db.Sequelize.STRING,
+	name: {
+		type: db.Sequelize.STRING,
 		allowNull: false,
 		unique: true
         },
 	cnpj: {
-                type: db.Sequelize.STRING(14),
+		type: db.Sequelize.STRING(14),
 		allowNull: true,
 		unique: true
         },
 	cep: {
-                type: db.Sequelize.STRING(8),
+		type: db.Sequelize.STRING(8),
 		allowNull: false,
 		unique: true
         },
-        categoria: {
-                type: db.Sequelize.STRING,
+	category: {
+		type: db.Sequelize.STRING,
 		allowNull: false
-        },
-	telefone: {
+	},
+	phone: {
 		type: db.Sequelize.STRING(8),
 		allowNull: true,
 		unique: true
@@ -60,20 +60,18 @@ const Microempresa = db.sequelize.define('microempresas', {
 		allowNull: true,
                 unique: true
 	},
-	descricao: {
+	desc: {
 		type: db.Sequelize.STRING,
 		allowNull: false
 	},
-	senha: {
+	password: {
 		type: db.Sequelize.STRING,
 		allowNull: false
 	},
-	foto_perfil: {
+	profile_picture_address: {
 		type: db.Sequelize.STRING,
 		allowNull: false
 	}
-})
+});
 
-//Microempresa.sync({force: true});
-
-module.exports = Microempresa;
+module.exports = Company;
