@@ -22,30 +22,4 @@ const Client = db.sequelize.define('clients', {
 	}
 });
 
-Cliente.belongsToMany(Microempresa, {
-	through: 'avaliacoes',
-	foreignKey: 'clienteId',
-	constraint: true
-});
-
-Microempresa.belongsToMany(Cliente, {
-	through: 'avaliacoes',
-	foreignKey: 'microempresaId',
-	constraint: true
-});
-
-Cliente.belongsToMany(Microempresa, {
-        through: 'favorites',
-        foreignKey: 'clienteId',
-        //constraint: true
-});
-
-Microempresa.belongsToMany(Cliente, {
-        through: 'favorites',
-        foreignKey: 'microempresaId',
-        //constraint: true
-});
-
-//db.sequelize.sync({force: true})
-
 module.exports = Client;
