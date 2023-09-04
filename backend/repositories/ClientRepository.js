@@ -8,7 +8,7 @@ async function createClient(name, email, password) {
             password: password
         });
 
-        return Client;
+        return client.dataValues;
     } catch(err) {
         throw err;
     }
